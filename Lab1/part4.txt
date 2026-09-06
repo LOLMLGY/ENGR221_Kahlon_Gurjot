@@ -1,0 +1,8 @@
+a: The names are "adventure" and "create_player"
+b: Line 7.
+c: 56
+d: adventure def
+e: to find a palyer name and class  
+f: "A unique specialty I do not recognize! Intriguing..."
+g: to take the values from the previous class varibles
+h: change retun 0 to return 1, becuase win == to the adventure func when it has a value of 0

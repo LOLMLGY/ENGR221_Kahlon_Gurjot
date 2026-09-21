@@ -1,0 +1,5 @@
+1. Well in gamedata, there is a line that pulls data from preferences and imports it into gamedata with a "from" command and a "import" command.
+2. A 2d array, but technically a list full of lists.
+3. Lists, and single cells, which are objects.
+4. Index the outer list via rows, then an inner list by columns.
+5. using cell.become_player(),become_food(),become_ememy()... etc.

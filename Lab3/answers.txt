@@ -1,0 +1,96 @@
+a. Using the "SortingAlgorithms.create_new_array(length)" command. It uses a list
+    comprehension that calls random.randint(0, Preferences.MAX_VAL) once per
+    element. THis then gives a list of a random length of integer, each 
+    integer being a carrots length. The length defaults to Preferences.NUM_ELEMENTS (20), and can be changed.
+b. Every time restart() is called for, as restart() calls for "SortingAlgorithms.create_new_array(length)" again.
+    And in controller.py, restart is called for when the user presses S, I, B, or R. Which is selections, insertion, bubble,
+    and restart respectively. 
+c. Yield turns selection_sort into a generator of sorts. Where it begins to pause as each yield, giving back a value when asked for it
+    and it remembers where it was so that when a value is requested again it continues from the line after the yield, letting the
+    gui go one step at a time.
+d. restart calls for selection_sort, which returns a generator thats inside of self.alg.method. And every call to get_next_step
+    runs self_alg_method, which causes selection_sort to run up the the next yield. THis pair is stored in self.outer_idx and 
+    self.inner_idx. 
+e. draw takes self, array, self.outer_idx and self.inner_idx. outer and inner track what edges are colored in the respective colors.
+    (inner bar is red, outer is blue.) Updates occur when get_next_step gets called and the generator yields, and the array is modified 
+    as the program runs. 
+
+
+Part 2:
+a. It always selects the smallest item in the unsorted list, then swaps it to the the next position of 
+    the sort part of the list. After pass (i), the first i+1 items are in their final position.
+b. O(n^2) B/c the outer loop runs n times and for ever I the inner loop scans the rest of the 
+    n-i-1 items. For ex (n-1)+(n-2)..... turning into n(n-1)/2.
+c. o(1) It sorts in place and the extra storage is only a few varibles that dont grow with list 
+    And no new list is made rather positions of items are only swapped with eachother.
+
+Part 3: 
+a. It remembers a sorted position on the left and takes the the next item and inserts it into the 
+    correct spot by swapping it towards the left past larger items.
+b. In the worst case its O(n^2): as the for loop runs n times and the inner runs for i times. for
+    something like a reverse ordered list. and the best case is O(n) for a fully sorted list.
+c. O(1) It is already in place, i, j, and a temp value are the only modified things and the list
+    is directly modified.
+
+Part 4:
+a. It goes through the list, comparing pairs of integers next to eachother and seeing if they 
+    are in order, if they arent, swap them.
+b. O(n^2), outer rins n-1 times, and inner is n-1-i.
+c. O(1) only swaps and 3 varibles.
+
+Part 4.2: Hand trace...
+    i    j     A[j]   A[j+1]     print(A)      (values compared, before swap)
+    N/A  N/A   N/A     N/A     [8, 1, 4, 2]
+     0    0     8       1      [1, 8, 4, 2]
+     0    1     8       4      [1, 4, 8, 2]
+     0    2     8       2      [1, 4, 2, 8]
+     1    0     1       4      [1, 4, 2, 8]
+     1    1     4       2      [1, 2, 4, 8]
+     2    0     1       2      [1, 2, 4, 8]
+
+part 4.3: 
+After the first pass the largest item is at the last place and sorted properly, then it does it again
+    on the second pass, the second largest is in the second to last place etc etc, for i iterations
+    After i passes the list is sorted so comparing wont swap it.
+
+Part 4.4: 
+a. Claude.
+b. "Write a bubble sort fuction, it should something that sorts the list self.array in place, and
+    doesn't use the inbuilt sort function."
+c. Output code:
+
+    def bubble_sort(self):
+        n = len(self.array)
+        for i in range(n):
+            swapped = False
+            for j in range(0, n - i - 1):
+                if self.array[j] > self.array[j + 1]:
+                    self.array[j], self.array[j + 1] = self.array[j + 1], self.array[j]
+                    swapped = True
+            # If no swaps happened, the list is already sorted
+            if not swapped:
+                break
+
+d.  Yes it runs in place and works well.
+e. Similar: Same nested loops, same comparison of A[j] and A[j+1], same swapping, and the same 
+    optimization with "-i" 
+   Differences: Add's a swapped flag when the sort ends early b/c a pass made no swaps. and uses 
+    a range of n instead of n-1, which doesnt change much.
+f. I wouldn't change it much differently besides just using the n-1 for any potential edge cases.
+
+Part 5: 
+a. selection_sort
+    100: 0.0010 seconds
+    1000: 0.0996 seconds
+    10000: 6.066 seconds
+b. insertion_sort
+   100: 0.0011 seconds
+   1000: 0.102 seconds
+   10000: 6.637 seconds
+c. bubble_sort
+    100: 0.0012 seconds
+    1000: 0.2133 seconds
+    10000: 12.277 seconds
+d. Conclusion is that these sorts are best for smaller sided lists due to runtime being the O(n^2) so as n gets bigger
+    the speed gets exponentially slower and that ruins your speed, and bubble sort was doubly slower at 10000 items compared to the
+    other algorithims due to many many more passes.

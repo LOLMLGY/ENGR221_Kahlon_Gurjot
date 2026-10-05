@@ -1,11 +1,8 @@
 """
-Author: Your Name Here
-Last Updated: [DATE]
-Stores all the data representing the state of the "Antarctic Survival" game,
-including the board (a 2D grid of Cells), and the current positions of the
-player, food, and enemies. Provides methods to query neighboring cells and
-to update the game state as the player moves, food is added/eaten, and
-enemies are added/moved.
+Author: Gurjot Kahlon
+Last Updated: 9/20/2026
+Stores all data regarding the player, enemys, the board, food, and other bits of game data.
+Such as movement of the player and enemies, adding food and enemies, and checking if the game is over.
 """
 
 import random

@@ -1,0 +1,24 @@
+part 1
+a. The location of the player is stored in the self.body list, which has the data points of what 
+    cell object is occupied by the player, body[0] is the player cell(the head). Every cell has 
+    and knows its row and column, along with it's type. (player, food, body, none)
+b. Get_player() shows the head, body[0], and get_tail() returns the last element in the body list body[-1]
+c. MoveMode has 5 modes, going_north, south east west, and ai_mode. In the direction modes, the player 
+    moves one cell at a time(per turn) in that direction while ai_mode chooses the direction via breath first seach,
+    depth first search.
+d. Get_next_cell() just shows the neighbor cell to the player's head in the current direction.(NSEW)
+    and if its none its going off the map. And in ai_mode the Get_next_cell_ai() would find it via search.
+
+Part 2
+a. End
+b. End
+c. End
+d. Beginning
+
+Part 3:
+a: Via DFS, the player no longer goes to the closest duck directly, rather it takes long paths
+    or randomish paths because its only looking for, or checking for the most recently added neighbor
+    and since its a stack, DFS goes as deep as possible before backing up, and the first food it may find
+    might not be the newst one. tldr path very long, but is found technically.
+b. BFS finds the shortest path. It checks all the cells in a order of closeness and if it finds food on a cell
+    it will head to the closest food.

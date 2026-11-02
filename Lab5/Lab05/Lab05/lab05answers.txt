@@ -1,0 +1,18 @@
+lab05answers
+1a: Both functions call to init_turtle() and move to the start. Then it loops 3 imes, each pass drawing one side with either draw_curve_recursive, or draw_curve_stack. Then turns the turtle 120 degrees toalign it to the text triagle side and that makes the snowflake. and it ends with turtle.clearscreen.
+
+1b: Each initial call draws one side of the triangle, at 0 depths its just a straight line, and any further is still just small parts of one side of a triangle.
+
+1c: It records the time via time.perf_counter, then runs the function right after (inside memory_useage call) and it records it another time after it finishes, total time is t final - t initial.
+
+4a:    Recursive memory usage:      32.6875 MB
+       Non-recursive memory usage:  32.0195 MB
+
+       Recursive time taken:        19.17 s
+       Non-recursive time taken:    18.85 s
+
+4b: 
+	Recursive stack uses the call stack, so where every single recursive call makes a new stack frame with the length and depth. along with local varibles and return address. All the frames on the path from the first cell to the base exist at the same time and the deepest the recursion goes is depth + 1 so the memory useage grows with depth.
+	Stack method does the same work with a loop and a list of "tuples" (Containers of fixed sets of data.) The tuples here have addcurve length and depth. Which is far less than a full thing which usually has a return address, saved local state, and an interpreter call. So since the loop pops one command and pushes it to be replaced the stack only has the ones still pending which at max is 3 times the depth + 1 tuple. And doesn't grow with a call chain so it uses less memory than recursive does.(generally)
+	For time, both methods do the same amount of work and turns etc etc, so the times usually end up very similar to eachother with no substantial difference.
+	And note, that at very small depths memory is basically no difference between the two and the number is also iffy since most memory comes from the drawing rather than the actual work.

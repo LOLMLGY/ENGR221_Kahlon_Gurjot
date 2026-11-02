@@ -1,5 +1,5 @@
 """
-Name: YOUR NAME HERE
+Name: Gurjot Kahlon
 Date last updated: November 1, 2026
 Description: Draws a Koch snowflake fractal using Python's turtle graphics.
     Each edge of the snowflake is drawn with a "curve" method, implemented

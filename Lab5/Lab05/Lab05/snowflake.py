@@ -30,7 +30,7 @@ class KochSnowflake:
             appropriate location on the screen """
         
         t = turtle.Turtle() # Initialize the turtle
-        t.speed(8) # Increase the turtle's speed
+        t.speed(15) # Increase the turtle's speed
         # Move the turtle to the upper left corner
         t.teleport(-200, -200)
         self.t = t

@@ -1,0 +1,29 @@
+Answers
+2.1.a  NodeType is an Enum holding 3 values it can be. School, program(progam), and faculty. Each represents a node in the roster. THe school of engineering, the program of engineering (comp sci, EE, etc.) and then the individual faculty.
+
+2.1.b A node is a leaf with no kids (children list == 0)
+
+2.1.c  The height is the # of edges on the pathfrom that node to a leaf in the subtree(leaf == height 0)
+
+2.1.d  The depth is the number of egdes from root to the node (root has 0 depth)
+
+2.1.e this starts at the root and traverses the tree with depth first and chekcs the current nodes value matches. and it recursively searches each childs sub tree. no node matches at all, the node value doesnt exist.
+
+
+
+3.1.a faculty_dict is a hash map dictionary. The keys(strings) are the last names of the members. to get a prof's info look up the last name with the command (EX: faculty_dict["Kubota"] (or faculty_dict.get("Kubota") which if it returns none the name is absent (also O(1) runtime)
+
+3.1.b Programstructure is a tree node aka the root (the school of engineering) of the faculty tree, reach everything else through its children.
+
+3.1.c df is a dataframe with the contents of faculty_list.xlsx, one row per prof with columns of first last name, program, rank, and office. df.appy calls the lambda once per row and the lambda takes that row via (x, padas series) and calls  self.add_prof(x, faculty_dict) to make a professor from the row and dictionaries it.
+
+4.1.a salf.faculty is a dictionary that makes last names to prof objects.
+
+4.1.b self root is a tree node (the root school) which has references to all the children it has and all of their children, and via the path we can reach any node starting at the root.
+
+4.1.c draw_tree is a pre-order traversal, which draws the current node first then recursively draws evey child subtree from the left of the tree to the right.
+
+4.1.d in running, the user text is empty. and every downkey updates it, basckspace deletes previous character, every loop the user_text passes down to the draw_input_box so the text stays nicely in the box, and when return(enter) is pressed the screen gets redrawn, calls to  self.show_info(user_text.strip().capitalize()), which passes the cleaned up text and resets user_text to empty(''), and that infro gets passed to show_info() which displays the result from the look up.
+
+
+
